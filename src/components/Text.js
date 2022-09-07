@@ -12,7 +12,7 @@ class Text extends React.Component{
 
     render(){
         return ( 
-            <div id="text" className="text-primary">{this.props.data}</div>
+            <div id="text" className="text-center text-primary m-5"><h1>"{this.props.data}"</h1></div>
         )}  
 }
 

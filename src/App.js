@@ -4,7 +4,10 @@ import QuoteBox from './components/QuoteBox'
 
 function App() {
   return (
-    <QuoteBox />
+    <div className = "w-100 container bg-danger  m-5 text-center">
+      <QuoteBox />
+    </div>
+    
   );
 }
 

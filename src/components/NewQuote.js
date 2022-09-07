@@ -11,7 +11,7 @@ class NewQuote extends React.Component{
     
     render(){
         return ( 
-            <button onClick = {this.refreshPage.bind(this)} id="new-quote" className="btn">New Quote</button>
+            <button onClick = {this.refreshPage.bind(this)} id="new-quote" className="btn btn-lg bg-primary border border-1 border-secondary rounded-pill m-5">New Quote | <i className="bi bi-arrow-clockwise"></i></button>
         )}  
 }
 

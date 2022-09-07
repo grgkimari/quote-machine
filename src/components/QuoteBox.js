@@ -48,7 +48,7 @@ class QuoteBox extends React.Component{
             author= obj[index].author
         }
         return ( 
-            <div id="quote-box" className="container border border-5 text-center">
+            <div id="quote-box" className="h-80 my-5 bg-light">
                 
                 <Text data ={text} />
                 <Author data = {author === null ? "Anonymous" : author}/>

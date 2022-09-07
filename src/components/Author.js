@@ -7,7 +7,7 @@ class Author extends React.Component{
     }
     render(){
         return ( 
-            <div id="author" className="">{this.props.data}</div>
+            <div id="author" className="m-5"><h6> ~ {this.props.data}</h6></div>
         )}  
 }
 
