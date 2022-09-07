@@ -10,7 +10,6 @@ class QuoteBox extends React.Component{
         this.state = {
             
         }
-        this.getNewQuote = this.getNewQuote.bind(this)
     }
 
 
@@ -28,6 +27,13 @@ class QuoteBox extends React.Component{
             .then((response) => response.json()).then((data) => {
                 this.setState({
                     data: data,
+                })
+            }).catch(() => {
+                this.setState({
+                    data : [{
+                        text : "Unable to fetch data",
+                        author : "No data"
+                    }]
                 })
             })
     }
