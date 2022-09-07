@@ -48,12 +48,12 @@ class QuoteBox extends React.Component{
             author= obj[index].author
         }
         return ( 
-            <div id="quote-box" className="h-80 my-5 bg-light">
+            <div id="quote-box" className="h-100 my-5 bg-light border border-dark">
                 
-                <Text data ={text} />
-                <Author data = {author === null ? "Anonymous" : author}/>
-                <NewQuote  />
-                <TweetQuote/>
+                <Text theme = {this.props.theme} data ={text} />
+                <Author theme = {this.props.theme} data = {author === null ? "Anonymous" : author}/>
+                <NewQuote theme = {this.props.theme}  />
+                <TweetQuote theme = {this.props.theme}/>
             </div>
         )}  
 }

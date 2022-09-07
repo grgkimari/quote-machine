@@ -7,7 +7,7 @@ class TweetQuote extends React.Component{
     }
     render(){
         return ( 
-            <a href = "twitter.com/intent/tweet" id="tweet-quote" className="btn btn-lg bg-primary border border-1 border-secondary rounded-pill m-5 ">Tweet Quote |  <i className="bi bi-share-fill"></i></a>
+            <a href = "twitter.com/intent/tweet" id="tweet-quote" className= {`btn btn-lg bg-${this.props.theme} border border-1 border-secondary rounded-pill m-5`}> Tweet Quote | <i className="bi bi-share-fill"></i></a>
         )}  
 }
 
