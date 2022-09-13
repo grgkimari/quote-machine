@@ -3,16 +3,14 @@ import React from 'react'
 class Text extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            data : 'Loading data ...'
-        }
+        
     }
 
 
 
     render(){
         return ( 
-            <div id="text" className={`text-center text-${this.props.theme} m-5`}><h1>"{this.props.data}"</h1></div>
+            <div id="text" className={`text-center text-${this.props.theme} m-5`}><h1>"{this.props.quote}"</h1></div>
         )}  
 }
 
