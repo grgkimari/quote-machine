@@ -7,6 +7,7 @@ import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import { mainReducer, SAVE_DATA} from './components/reducer';
+import Author from './components/Author';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,14 +16,20 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore(mainReducer, applyMiddleware(thunk))
 const unsubscribe = store.subscribe(() => null)
 
-//Fetch quotes
+//Custom css styles
+const styles = {
+  height : Author,
+}
 
 
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <div style={styles}>
       <ConnectedApp />
+      </div>
+      
     </Provider>
   </React.StrictMode>
 );
