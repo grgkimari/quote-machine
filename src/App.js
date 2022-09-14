@@ -16,6 +16,7 @@ class App extends React.Component {
     this.getNewQuote = this.getNewQuote.bind(this)
     this.getData = this.getData.bind(this)
     this.getData()
+    this.getNewQuote()
   }
   
   getNewQuote(){
@@ -26,7 +27,6 @@ class App extends React.Component {
       (response) => response.json())
     .then((json) => {
       this.props.updateData(json)
-      typeof this.props.data === 'object' ?  this.props.updateTarget(this.props.data) : console.log()
     })
   }
 
