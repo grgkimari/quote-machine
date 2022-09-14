@@ -15,6 +15,7 @@ class App extends React.Component {
     super(props)
     this.getNewQuote = this.getNewQuote.bind(this)
     this.getData = this.getData.bind(this)
+    this.getData()
   }
   
   getNewQuote(){
@@ -29,10 +30,7 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getData()
-    
-  }
+
 
   render(){
     return (
