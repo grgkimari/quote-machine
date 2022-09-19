@@ -1,11 +1,12 @@
 export const SAVE_DATA = "SAVE_DATA"
 export const UPDATE_TARGET = "UPDATE_TARGET"
+export const LOG_ERROR = "LOG_ERROR"
 const initialState = {
     target : {
         text: 'Loading ...',
         author : ""
     },
-    data : "NO DATA",
+    data : null,
 }
 export function mainReducer(state = initialState, action){
     switch (action.type){
@@ -18,6 +19,14 @@ export function mainReducer(state = initialState, action){
             return {
                 ...state,
                 target : action.target,
+            }
+        case LOG_ERROR:
+            return {
+                target: {
+                    text : action.err,
+                    author : "N/A"
+                },
+                data : null
             }
         default:
             return state

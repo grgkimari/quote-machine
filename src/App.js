@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import QuoteBox from './components/QuoteBox'
-import { SAVE_DATA, UPDATE_TARGET } from './components/reducer';
+import { SAVE_DATA, UPDATE_TARGET, LOG_ERROR} from './components/reducer';
 import {connect} from 'react-redux'
 
 const colors = ['danger', 'primary', 'secondary', 'success', 'info', 'warning']
@@ -21,13 +21,14 @@ class App extends React.Component {
   
   getNewQuote(){
     this.props.updateTarget(this.props.data)
+    data = JSON.stringify(this.props.target)
   }
   getData(){
     fetch(url).then(
       (response) => response.json())
     .then((json) => {
       this.props.updateData(json)
-    })
+    }).catch((err) => this.props.logError((err)))
   }
 
 
@@ -36,11 +37,19 @@ class App extends React.Component {
     return (
       <div  className = {`w-100 h-100 container bg-${color}  my-5 text-center`}>
         <QuoteBox  theme = {color} target = {this.props.target} updateTarget = {this.props.getNewQuote}/>
+        <h1>{data}</h1>
       </div>
       
     );
   }
 
+}
+
+const logError = (err) => {
+  return {
+    type : LOG_ERROR,
+    error : err,
+  }
 }
 
 const updateData = (payload) => {
@@ -51,6 +60,7 @@ const updateData = (payload) => {
 }
 
 const updateTarget = (data) => {
+
   return {
     type : UPDATE_TARGET,
     target : data[Math.floor(Math.random() * data.length)]
@@ -72,7 +82,10 @@ const mapDispatchToProps = (dispatch) => {
     updateTarget : function (data){
       dispatch(updateTarget(data))
     },
+    logError : function (err){
+      dispatch(logError(err))
+    }
     }
 }
 export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
-export default App;
+

@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
-import { mainReducer, SAVE_DATA} from './components/reducer';
+import { mainReducer} from './components/reducer';
 import Author from './components/Author';
 
 
@@ -18,7 +18,7 @@ const unsubscribe = store.subscribe(() => null)
 
 //Custom css styles
 const styles = {
-  height : Author,
+  height : 'auto',
 }
 
 
