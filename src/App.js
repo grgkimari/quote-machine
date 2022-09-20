@@ -5,7 +5,7 @@ import { SAVE_DATA, UPDATE_TARGET, LOG_ERROR} from './components/reducer';
 import {connect} from 'react-redux'
 
 const colors = ['danger', 'primary', 'secondary', 'success', 'info', 'warning']
-const color = colors[Math.floor(Math.random() * colors.length)]
+let color = colors[Math.floor(Math.random() * colors.length)]
 let url= "https://type.fit/api/quotes"
 let data = "None"
 
@@ -15,16 +15,22 @@ class App extends React.Component {
     super(props)
     this.getNewQuote = this.getNewQuote.bind(this)
     this.getData = this.getData.bind(this)
+    
+  }
+
+  componentDidMount(){
     this.getData()
     this.getNewQuote()
   }
-  
+
   getNewQuote(){
     this.props.updateTarget(this.props.data)
-    data = JSON.stringify(this.props.target)
+    color = colors[Math.floor(Math.random() * colors.length)]
+
   }
-  getData(){
-    fetch(url).then(
+  async getData(){
+    
+    await fetch(url).then(
       (response) => response.json())
     .then((json) => {
       this.props.updateData(json)
@@ -36,8 +42,8 @@ class App extends React.Component {
   render(){
     return (
       <div  className = {`w-100 h-100 container bg-${color}  my-5 text-center`}>
-        <QuoteBox  theme = {color} target = {this.props.target} updateTarget = {this.props.getNewQuote}/>
-        <h1>{data}</h1>
+        <QuoteBox  theme = {color} target = {this.props.target} getNewQuote = {this.getNewQuote}/>
+
       </div>
       
     );
@@ -60,6 +66,12 @@ const updateData = (payload) => {
 }
 
 const updateTarget = (data) => {
+  if(data === null){
+    return {
+      type : LOG_ERROR,
+      error : "NO DATA",
+    }
+  }
 
   return {
     type : UPDATE_TARGET,

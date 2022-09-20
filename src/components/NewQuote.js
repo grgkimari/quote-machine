@@ -5,13 +5,10 @@ class NewQuote extends React.Component{
         super(props)
         this.state = {}
     }
-    refreshPage(){
-        window.location.reload ()
-    }
     
     render(){
         return ( 
-            <button onClick = {this.refreshPage.bind(this)} id="new-quote" className={`btn btn-lg bg-${this.props.theme} border border-1 border-secondary rounded-pill m-5`}>New Quote | <i className="bi bi-arrow-clockwise"></i></button>
+            <button onClick = {this.props.getNewQuote} id="new-quote" className={`btn btn-lg bg-${this.props.theme} border border-1 border-secondary rounded-pill m-5`}>New Quote | <i className="bi bi-arrow-clockwise"></i></button>
         )}  
 }
 

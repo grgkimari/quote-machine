@@ -20,14 +20,6 @@ export function mainReducer(state = initialState, action){
                 ...state,
                 target : action.target,
             }
-        case LOG_ERROR:
-            return {
-                target: {
-                    text : action.err,
-                    author : "N/A"
-                },
-                data : null
-            }
         default:
             return state
     }
