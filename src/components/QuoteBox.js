@@ -18,7 +18,7 @@ class QuoteBox extends React.Component{
                  <Text theme = {this.props.theme} quote = {this.props.target.text} />
                  <Author theme = {this.props.theme} author = {this.props.target.author}/>
                  <NewQuote theme = {this.props.theme} getNewQuote={this.props.getNewQuote} />
-                 <TweetQuote theme = {this.props.theme} target={this.props.target}/>
+                 {this.props.target.author ? <TweetQuote theme = {this.props.theme} target={this.props.target}/> : null }
             </div>
         )}  
 }

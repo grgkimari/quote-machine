@@ -14,12 +14,9 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.getNewQuote = this.getNewQuote.bind(this)
-    this.getData = this.getData.bind(this)
     
   }
-
   componentDidMount(){
-    this.getData()
     this.getNewQuote()
   }
 
@@ -28,22 +25,12 @@ class App extends React.Component {
     color = colors[Math.floor(Math.random() * colors.length)]
 
   }
-  async getData(){
-    
-    await fetch(url).then(
-      (response) => response.json())
-    .then((json) => {
-      this.props.updateData(json)
-    }).catch((err) => this.props.logError((err)))
-  }
-
-
 
   render(){
     return (
       <div  className = {`w-100 h-100 container bg-${color}  my-5 text-center`}>
         <QuoteBox  theme = {color} target = {this.props.target} getNewQuote = {this.getNewQuote}/>
-
+        {/* {JSON.stringify(this.props.data)} */}
       </div>
       
     );
@@ -58,12 +45,12 @@ const logError = (err) => {
   }
 }
 
-const updateData = (payload) => {
-  return {
-    type : SAVE_DATA,
-    payload 
-  }
-}
+// const updateData = (payload) => {
+//   return {
+//     type : SAVE_DATA,
+//     payload 
+//   }
+// }
 
 const updateTarget = (data) => {
   if(data === null){
@@ -88,9 +75,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateData : function (data){
-      dispatch(updateData(data))
-    },
+    // updateData : function (data){
+    //   dispatch(updateData(data))
+    // },
     updateTarget : function (data){
       dispatch(updateTarget(data))
     },
