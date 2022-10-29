@@ -1,4 +1,4 @@
-# Random Quote Generator
+# Quote Machine
 This project was undertaken as part of the freecodeCamp front end libraries certification path.
 
 The page displays a new quote and its author on load and when the 'New Quote' button is clicked. 
